@@ -1,0 +1,29 @@
+{
+    "company": "Northstar Technologies",
+    "documents": [
+        {
+            "id": "DOC001",
+            "type": "policy",
+            "title": "Support Policy Guidelines",
+            "department": "Customer Support",
+            "created_date": "2025-01-15",
+            "content": "All customer queries must be responded within 24 hours. Priority tickets should be handled within 4 hours."
+        },
+        {
+            "id": "DOC002",
+            "type": "incident",
+            "title": "Warehouse Cooling Failure",
+            "department": "Operations",
+            "created_date": "2025-02-10",
+            "content": "Cooling system failure caused temperature rise. Immediate action taken and backup system activated."
+        },
+        {
+            "id": "DOC003",
+            "type": "meeting",
+            "title": "Aster Product Launch Meeting",
+            "department": "Product Team",
+            "created_date": "2025-03-05",
+            "content": "Discussion on launch timeline, marketing strategy, and risk analysis."
+        }
+    ]
+}
