@@ -36,7 +36,7 @@ def root():
 
 @app.post("/chat", response_model=QueryResponse)
 def chat(query: QueryInput):
-    session_id = query.session_id or str(uuid.uudi4())
+    session_id = query.session_id or str(uuid.uuid4())
     chat_history = get_chat_history(session_id)
     rag_chain = get_rag_chain(query.model)
 

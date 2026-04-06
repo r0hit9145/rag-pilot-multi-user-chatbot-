@@ -82,7 +82,7 @@ def insert_document(filename):
         values(?)
 """, (filename,)
 )
-    doc_id = cursor.lastrowid()
+    doc_id = cursor.lastrowid
     conn.commit()
     conn.close()
 

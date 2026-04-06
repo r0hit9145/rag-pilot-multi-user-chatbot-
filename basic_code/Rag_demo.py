@@ -434,5 +434,4 @@ print("Human Ask: ", followup_question)
 print("AI ANSWER 2: ", answer2)
 
 
-
 # next move this is all about convert into API (fastAPI ) fro the code, then connect or pipeline with frontend 

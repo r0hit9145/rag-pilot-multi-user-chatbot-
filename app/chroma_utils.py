@@ -52,11 +52,15 @@ def add_document_to_chroma(file_path: str, file_id: int):
 def delete_document_from_chroma(file_id: int):
     vectorstore = get_vectorstore()
     data = vectorstore.get(where={"file_id": file_id})
+    print("Delete check:", data)
 
     ids = data.get("ids", [])
     if ids:
         vectorstore.delete(ids=ids)
         vectorstore.persist()
+        print("deleted ids", ids)
+    else:
+        print("no ids or mismatch for the file id:", file_id)
 
 
 
