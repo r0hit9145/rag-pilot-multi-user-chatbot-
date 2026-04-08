@@ -12,7 +12,7 @@ if "session_id" not in st.session_state:
     st.session_state.session_id = None
 
 if "selected_model" not in st.session_state:
-    st.session_state.selected_model = "gpt-4o"
+    st.session_state.selected_model = "llama-3.3-70b-versatile"
 
 st.title("Langchain RAG Chatbot")
 
@@ -51,10 +51,11 @@ with st.sidebar:
 
     docs = []
     try:
-        res = requests.get(f"{API_BASE}/documents", timeout=30)
+        res = requests.get(f"{API_BASE}/list-docs", timeout=30)
         if res.status_code == 200:
             data = res.json()
             docs = data if isinstance(data, list) else data.get("documents", [])
+            print(docs, "checking>>>>>>>>>>>>>>")
         else:
             st.warning("Could not load document list.")
     except Exception as e:
@@ -80,7 +81,11 @@ with st.sidebar:
             file_id = doc_options[selected_doc_name]
             try:
                 with st.spinner("Deleting document..."):
-                    res = requests.delete(f"{API_BASE}/documents/{file_id}", timeout=60)
+                    res = requests.post(
+                        f"{API_BASE}/delete-doc",
+                        json = {"file_id": file_id},
+                        timeout = 60
+                    )
 
                 if res.status_code == 200:
                     st.success("Document deleted successfully.")
