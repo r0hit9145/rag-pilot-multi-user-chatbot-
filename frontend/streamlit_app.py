@@ -3,8 +3,11 @@ import streamlit as st
 
 API_BASE = "http://127.0.0.1:8000"
 
-st.set_page_config(page_title="Langchain RAG Chatbot", layout="wide")
-
+st.set_page_config(page_title="QueryPilot", layout="wide")
+st.markdown(
+    "<h3 style='text-align: left; margin-top: -60px; postion: fixed'>QueryPilot</h3>",
+    unsafe_allow_html=True
+)
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -14,13 +17,22 @@ if "session_id" not in st.session_state:
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = "llama-3.3-70b-versatile"
 
-st.title("Langchain RAG Chatbot")
+st.markdown("""
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    ">
+        <h1>Where should we begin?</h1>
+    </div>
+""", unsafe_allow_html=True)
 
 with st.sidebar:
     st.subheader("Select Model")
     st.session_state.selected_model = st.selectbox(
         "Model",
-        ["gpt-4o", "llama-3.3-70b-versatile"],
+        ["llama-3.3-70b-versatile", "gpt-4o"],
         index=0,
         label_visibility="collapsed"
     )
@@ -106,7 +118,7 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-prompt = st.chat_input("Query:")
+prompt = st.chat_input("Ask Your Query :)")
 
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
